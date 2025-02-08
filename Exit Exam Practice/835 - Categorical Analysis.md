@@ -336,7 +336,7 @@ A more informative check compares the working model to models that contain addit
 
 **Example:** calculating degrees of freedom
 ![[Pasted image 20241017141112.png]]
-![[Pasted image 20241017141119.png]]
+![[belief in afterlife by gender and race.png]]
 ```r
 Afterlife <- read.table("http://www.stat.ufl.edu/~aa/cat/data/Afterlife.dat", 
 						header=TRUE)

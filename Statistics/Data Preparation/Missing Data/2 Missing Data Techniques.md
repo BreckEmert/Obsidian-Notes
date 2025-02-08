@@ -68,4 +68,4 @@ As long as the cause of missingness is observed, MAR, the estimates are consiste
 
 ### KNN
 ![[Pasted image 20240911165340.png]]
-![[Pasted image 20240911165345.png]]
+![[missingness rate vs relative bias.png]]

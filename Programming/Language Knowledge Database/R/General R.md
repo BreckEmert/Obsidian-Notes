@@ -1,4 +1,4 @@
-![[Pasted image 20241017150121.png]]
+![[r chisq functions.png]]
 
 #### apply() function
 **input**: data.frame or matrix

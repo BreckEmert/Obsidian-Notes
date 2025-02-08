@@ -1,1 +1,1 @@
-![[Pasted image 20241101123801.png]]
+![[machine learning algs cheatsheet.png]]

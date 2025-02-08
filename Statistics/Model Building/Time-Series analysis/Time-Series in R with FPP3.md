@@ -21,7 +21,7 @@ mydata <- tsibble(
 	index = year
 )
 ```
-![[Pasted image 20240930181237.png]]
+![[tsibble year and y.png]]
 
 You can pipe this object to achieve the same results, note that `|>` does the same thing as `%>%` *in this case (and most others)*:
 ```

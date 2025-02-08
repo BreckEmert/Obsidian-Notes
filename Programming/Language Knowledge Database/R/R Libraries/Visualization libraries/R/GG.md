@@ -23,7 +23,7 @@ ggpairs(
   progress = FALSE
 )
 ```
-![[Pasted image 20240904182108.png]]
+![[ggplot2 binary jitter plot.png]]
 
 Adding jitter on the categorical variables:
 ```r
@@ -52,7 +52,7 @@ ggplot(data, aes(x=factor(trt), y=y, fill=factor(trt))) +
         legend.position = "none", 
         aspect.ratio = 5/6)
 ```
-![[Pasted image 20241111182446.png]]
+![[distribution of treatment before adjustment.png]]
 
 Repeated measures scatterplot setup (the `geom_text` is awful but):
 ```r

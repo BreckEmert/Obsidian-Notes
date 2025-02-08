@@ -67,7 +67,7 @@ ggplot(data=golfball.means, aes(x=brand, y=mean_distance, color=golfer)) +
 - **Main Effect**: Parallel lines in an interaction plot suggest no interaction, while different line slopes suggest a main effect.
 - **Interaction Effect**: Non-parallel lines indicate an interaction between the factors, suggesting that the effect of one factor varies depending on the level of the other.
 
-![[Pasted image 20240831175905.png]]
+![[meat packing example data.png]]
 
 **Example**: Suppose we have a dataset on golf ball `distance` affected by two factors: `brand` and `golfer`. A one-way ANOVA might test if different brands yield different distances, while a two-way ANOVA would assess both the effect of brand and golfer, as well as the interaction between brand and golfer on distance.
 

@@ -1,6 +1,6 @@
 ![[R_stepwise_model_selection_features.xlsx]]
 
-![[Pasted image 20241101123526.png]]
+![[r library model selection comparison.png]]
 
 #### Caret implementation
 Using cross-validated stepwise:

@@ -36,14 +36,14 @@ Calculating some critical statistics for this dataset:
 
 ### An Example
 
-![[Pasted image 20240831175905.png]]
+![[meat packing example data.png]]
 
 - **Example**: Comparing types of meat packaging on bacteria accumulation.
   - **Response Variable**: Log count of psychotropic bacteria per cm².
   - **Treatment Levels**: Different types of packaging. `length(unique(Treatment))`
   - **Hypothesis**: Does packaging type affect bacteria levels after storage?
 
-![[Pasted image 20240831180237.png]]
+![[one-way anova inference questions.png]]
 
 ![[Pasted image 20240831180724.png]]
 

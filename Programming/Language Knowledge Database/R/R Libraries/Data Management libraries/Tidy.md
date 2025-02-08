@@ -1,6 +1,6 @@
 
 ![[download.png]]
-![[Pasted image 20240903211002.png]]
+![[tidyr nested data.png]]
 
 Create a new column to visualize if it's a weekday:
 ```

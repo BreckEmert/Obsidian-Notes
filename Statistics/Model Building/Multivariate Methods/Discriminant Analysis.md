@@ -42,7 +42,7 @@ $$\Pr(y=1 \mid x=\hat{x}) \; = \; \Pr(y=0 \mid x=\hat{x})$$
 
 ## LDA vs. Logistic Regression
 Something robust, and good to know, is exactly _why_ the assumptions LDA makes helps us out.  In LDA, we don't _just_ 'assume it' for validity, we're actually _imposing_ this structure on the data.  I think this graph shows best how heavily having to do a simple calculation of the covariance matrix is, by showing we define the LD largely in terms of the inverse covariance matrix.
-![[Pasted image 20241018131703.png]]
+![[lda decision bound vs first pc.png]]
 
 If the assumptions of LDA are fully met then the errors LDA makes in prediction are only due to the errors in estimation of the mean and variance of the sample.  Inversely, this means we expect LR to perform just as well as LDA when the sample size is high.
 

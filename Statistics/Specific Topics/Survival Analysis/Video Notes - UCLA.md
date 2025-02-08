@@ -9,7 +9,7 @@
 - Let $T$ be a random variable representing a subject's true survival time.
 - The survival function, $S(t)$, expresses the probability that a subject's true survival time $T$ will exceed time $t$, i.e., that the subject will survive beyond time $t$.
 
-![[Pasted image 20240902193312.png]]
+![[basic survival function.png]]
 where:
 - $T$ is the actual survival times
 - $t$ is some particular time point
@@ -29,8 +29,8 @@ The cumulative hazard function, $H(t)$, expresses how much hazard a subject has 
 - The probability that a subject will fail over time increases as the hazard accumulates. 
 - Because the hazard function $h(t)$ is never negative, the cumulative hazard $H(t)$ can never decrease with time.
 
-![[Pasted image 20240902220553.png]]
-![[Pasted image 20240902220819.png]]
+![[hazard vs cumulative hazard graph.png]]
+![[cumulative hazards and corresponding survival functions.png]]
 
 
 ## Censoring
@@ -42,14 +42,14 @@ There are three main types of censoring:
 1. **Right Censoring**: This is the most common type, where we know that a subject has survived up to a certain time, but we don't know what happens after that.  For example, if a study ends after five years, and a subject is still alive at that point, we only know they survived up to the five-year mark, but not beyond it.  Or, if a subject is no longer "at risk" for the event after the study begins.
 2. **Left Censoring**: This occurs when we know the event happened before a certain time, but we don't know exactly when.  For instance, if a subject had a relapse before entering the study, but we don't know the exact date, this is left censoring.  Disease infection is another common example, where positive tests for the infection may be delayed by days or even years.
 3. **Interval Censoring**: This happens when we know the event happened with a certain time interval, but not exactly when.  For example, if a subject only visits the clinic every six months, and the even occurs sometime between visits, we only know that it occurred within that interval.  Or, if a subject tests negative for covid, and later positive, they must have been infected between those two points.
-![[Pasted image 20240902221053.png]]
+![[censoring example.png]]
 
 #### Assumption of non-informative censoring
 Most survival analysis methods assume non-informative censoring.
 - A subject's censoring time should not be related to the unobserved survival time
 - The distribution of censoring times and survival times should be unrelated
 
-![[Pasted image 20240902221740.png]]
+![[left vs right censoring.png]]
 
 
 Failing to account for informative censoring may result in biased estimates of survival.  Below are plots of the Kaplan-Meier survival function estimates of the above data:
@@ -107,19 +107,19 @@ Survival estimates do not change if someone drops due to censoring, although the
 	- **median**: survival time at which `S(t)` = 0.5, or the time at which 50% of those at risk are expected to still be alive.
 	- **0.95LCL, 0.95UCL**: the 95% confidence limits for median survival
 
-![[Pasted image 20240903123024.png]]
+![[survfit results 2.png]]
 
 **The `tidy()` function from the `broom` package works with many of the output objects created by the `survival` package to create tables stored as tibbles.**
 
 Using `tidy()` on the `survfit()` object produces a table of the KM estimate of the survival function `S(t)`.  In this table, `estimate` is calculated as $\hat{S}(5) = (1 - \frac{2}{23}) = .913$ and $\hat{S}(8) = (1 - \frac{2}{23})(1 - \frac{2}{21}) = .826$.
 
-![[Pasted image 20240903123238.png]]
+![[km surv function as tibble.png]]
 
 Note that if the last person is censored in your dataset, the estimate may not go all the way to 0.
 
 #### Stratified Kaplan-Meier estimates
 To estimate separate KM survival functions for different strata, specify one or more strata variables after the `~` in `survfit()`.  Note that if the center of one strata's confidence interval overlaps with the center of the other strata, the groups are probably not different.  You're only safe when they're completely non-overlapping.
-![[Pasted image 20240903125859.png]]
+![[survfit results.png]]
 
 The `tidy()` table adds on a `strata` column specifying the `x=strata_name`.
 
@@ -187,7 +187,7 @@ $$
 The log-rank statistic is a popular method to evaluate this hypothesis.
 - Under the null, the log-rank statistic is $\chi^2$ distributed with $g - 1$ degrees of freedom, where $g$ is the number of groups.
 - The function `survdiff()` performs the log-rank test by default.
-![[Pasted image 20240903132526.png]]
+![[survdiff results 2.png]]
 
 
 ## Weighted calculations
@@ -197,7 +197,7 @@ Sometimes, weighing earlier time points in survival analysis can reduce noise fr
 - `rho=0` equal weights, $\hat{S}(t)^0 = 1$, which is the log-rank test and the default.
 - `rho=1` the weights are equal to the survival estimate itself, $\hat{S}(t)^1 \hat{S}(t)$, equivalent to the Gehan-Wilcoxson test.
 - `rho=` values between 0 and 1 are valid, with values closer to 1 putting more weight on earlier time points.
-![[Pasted image 20240903134222.png]]
+![[survdiff results.png]]
 
 
 ## The Cox proportional hazards model
@@ -220,7 +220,7 @@ $$h(t|X_1 = x_1) = h_0(t)\exp(b_1x_1)$$
 - $h(t|X_1 = x_1)$: the hazard at time $t$ for a subject with predictor $X_1$ equal to the value $x_1$
 - $h_0(t)$: the baseline hazard at time $t$; the hazard for a subject with all predictors equal to zero (in this case, $x_1=0$).  **Note that all calculations using $h_0(t)$ cancel out, as the Cox model doesn't need to know what this hazard function is.  The hazard can be constant or changing.**
 - $\exp(b_1x_1)$: the *hazard ratio* comparing the hazard for a subject with $X_1 = x_1$ to a subject with $X_1 = 0$
-![[Pasted image 20240903192309.png]]
+![[fit cox model without knowing shape.png]]
 
 
 ## Hazard ratio
@@ -265,11 +265,11 @@ $$\text{HR} = \exp(b_1)$$
 **Note**: With proportional hazards, a subject's *hazard function* (which we don't need to know for the Cox model) can change over time.  But the hazard ratio comparing that subject's hazard to another subject's hazard cannot change over time, provided their covariate values do not change.
 
 Visually, this is represented by "parallel" survival curves that should not cross:
-![[Pasted image 20240903191211.png]]
+![[proportional hazard functions 2.png]]
 
 The parallelism is easier to evaluate if we plot $-\log-\log(S(t)))$.  If the hazards are proportional, the vertical distance between the curves is constant across time.
-![[Pasted image 20240903191308.png]]
-![[Pasted image 20240903191451.png]]
+![[proportional hazard functions.png]]
+![[nonproportional hazard functions.png]]
 
 
 #### Assessing the proportional hazards assumption
@@ -285,7 +285,7 @@ $$
 The null hypothesis of proportional hazards is tested for each covariate individually *and* jointly.
 
 `cox.zph(lung.cox)`
-![[Pasted image 20240903225441.png]]
+![[chisq age sex wt loss.png]]
 No strong evidence of violation of proportional hazards for any covariate, though some suggestion that sex may violate.  Remember that `lung.cox` came from:
 `lung.cox <- coxph(Surv(time, status) ~ age + sex + wt.loss, data=lung)`
 
@@ -347,7 +347,7 @@ summary(lung.cox)
 ```
 
 output:
-![[Pasted image 20240903203628.png]]
+![[coxph results.png]]
 
 Remember that the `coef` column are the *log* hazard ratios.  **Always look at the number of events in the summary output, to make sure it's the number you expect.**
 
@@ -396,7 +396,7 @@ ggplot(lung.cox.tab, aes(x=estimate, y=term, xmin=conf.low, xmax=conf.high)) +
 ```
 
 (This plot is confusing because the CIs are tight and covering $\text{HR}=1$, but the red line shows that these two variables are not significant while `sex` is.)
-![[Pasted image 20240903211747.png]]
+![[hazard ratios and 95 cis.png]]
 
 
 ## Predicting survival with Cox estimates

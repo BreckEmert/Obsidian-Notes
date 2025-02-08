@@ -14,4 +14,4 @@ plot <- ggplot(data_melted, aes(x = variable, fill = value)) +
   theme(axis.text.x = element_text(angle = 45, hjust = 1))  # Rotate x-axis labels for better readability
 print(plot)
 ```
-![[Pasted image 20240904182328.png]]
+![[fancy r ratio graph.png]]

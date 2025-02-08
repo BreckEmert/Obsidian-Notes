@@ -23,6 +23,6 @@ Graph CCC vs. NCluster:
 To analyze the cluster fit *not* in PC space and instead with the original data, save the `Clusters`:
 ![[Pasted image 20240913211831.png]]
 Scatterplot 3d:
-![[Pasted image 20240913211852.png]]
+![[jmp scatterplot3d clusters.png]]
 ![[Pasted image 20240913211902.png]]
 

@@ -1,7 +1,7 @@
 ## ADD NOTES FROM THIS PAPER
 ![[ElasticNet.pdf]]
 
-![[Pasted image 20241017203841.png]]
+![[lasso limitations.png]]
 
 ## Lasso (L1) and Ridge (L2)
 *Ridge and Lasso do not universally dominate the other, and cross-validation can be used to compare the techniques.*

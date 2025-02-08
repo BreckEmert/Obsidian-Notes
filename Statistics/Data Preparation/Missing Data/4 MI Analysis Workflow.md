@@ -8,16 +8,16 @@ These data types are different ways of storing the imputed values -
 - **flong**: Used when there's significant variability in the variables across imputations
 
 Long format:
-![[Pasted image 20240830230733.png]]
+![[imputation table.png]]
 
 Wide format:
-![[Pasted image 20240830230629.png]]
+![[wide imputation table.png]]
 
 Flongsep format:
-![[Pasted image 20240830230644.png]]
+![[separate file imputation tables.png]]
 
 Flong format:
-![[Pasted image 20240830230655.png]]
+![[imputation table 2.png]]
 
 - Impute categorical variables, not their dummy variables (1s not the 0s).  Also only impute base variables, not interactions.  Auxiliary variables need to be registered with the software as well.
 - Generate passive variables (dummies, interactions) (also known as non-imputed variables)

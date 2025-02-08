@@ -43,7 +43,7 @@ holidays |> gg_season(Trips) +
 This shows that the location of the states changes the seasonal trends of the data.
 
 ## White noise data
-![[Pasted image 20240930200625.png]]
+![[acf graph.png]]
 Sampling distribution of $r_k$ for white noise data is asymptotically $N(0, 1/T)$.
 - 95% of all $r_k$ for white noise must lie within $\pm1.96/\sqrt{T}$.
 - If this is not the case, the series is probably not WN.

@@ -1,0 +1,2 @@
+Explanation of a test that $\beta_3 = 0$ vs. $\beta_3 \neq 0$:
+"We fail to reject the null hypothesis that $\beta_3=0$, as the explanatory power of the term is within what we'd expect 95% of the time from a random, non-informative variable."

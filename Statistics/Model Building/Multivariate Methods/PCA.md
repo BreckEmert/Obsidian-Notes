@@ -1,0 +1,9 @@
+## Permutation Tests
+A permutation test can be used to evaluate the significance of a statistic (we'll get to how this is relevant to PCA in a second).  If we shuffle the labels of the dataset, but retain the explanatory variables as-is, we are simulating what the data might look like under the null hypothesis.
+
+For each shuffle, we recalculate the statistic of interest (maybe $R^2$, or classification accuracy).  After many shuffles (~1000+), **we get a representative distribution of what the statistic tends to look like when the label is noise.**  If the statistic from the true (unshuffled) data lies far out in the tail of this distribution, we can conclude that the observed statistic is statistically significant.
+
+So for PCA - we might want to know if the structure we uncovered is actually related to the target variable, say, whether the first few principal components separate cancer vs. healthy tissue.  We want to know if this structure also arises under random labelings.  I'm not interested in the details beyond this point - but to actually compare these structures we can look at projections of the data into the PCA space and compare group centroids.  This acts similar enough to how you might naively do it with a dot-product.
+
+## Test data is relevant with PCA too
+Test data is also relevant with PCA.  If used to simplify a modeling problem, you should cross-validate to assess the generalization error.  One of the only times I can think of to use PCA regression in this day and age is with a wild amount of highly multicollinear variables.  If you had 500 sensor measurements from an industrial system, and domain insight is not reasonable, this is a good way to keep the process purely unsupervised.

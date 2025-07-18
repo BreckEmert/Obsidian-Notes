@@ -96,4 +96,4 @@ Reminder about Sens, Spec, Prec, NPV
 What does the graph of precision, recall and F1 score look like?
 ?
 The formula is $F1 = \frac{2\times\text{precision}\times\text{recall}}{\text{precision}+\text{recall}}$.  Since it's normalized it peaks at 1, and parabolically goes to 0.  For balanced cases of $\text{precision} = \text{recall}$ it goes linearly to 1.
-![[f1_score_graph.png]]
+	![[f1_score_graph.png]]

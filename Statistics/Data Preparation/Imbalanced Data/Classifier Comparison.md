@@ -1,0 +1,7 @@
+This is a comparison of how classifiers do with imbalanced data without any help.  In practice, please always account for class imbalance (and try to do better than [[SMOTE]].  But it's useful to know how the models deal with this to understand them better.
+
+- **KNN:** As minority examples get more scattered, and as K rises, they become exponentially more likely to be outvoted.  Local voting can still work in tight clusters.
+- **NB:** Class-frequency priors make this horrible with class imbalance.  Though, it can still work with a large difference between the classes that give high likelihood differences.
+- **DT:** Remember the model is looking for axis-aligned splits.  And when there's more positive points, the positive-class territory just has more points than the negative, so the model is incentivized so shove the axis into this territory.
+- **RF:** Subsets of the data rapidly struggle to have any useful information to go off of.  There will quickly be splits with 0 information, and voting destroys the minority class.
+- **ANN:** Gradients simply get dominated by majority class examples.  But because of "MLP unsupervised learning theory", or whatever you want to call it (I've written so much about this, maybe most notably on [my blog](https://breckemert.github.io/ai/leaders/2025/06/02/Ilya's-Superhuman-Inference-Claim.html)), they often just have the capacity to do really well.  They don't overfit because the gradient gets routed to where the model has room during backpropagation, and as long as the number of epochs remains low they can do fine.
